@@ -72,10 +72,56 @@ function processAlternateValues(value){
     }
     else if (value=="equate"){
         equateEquation()
+        equation = ""
     }
 }
 
 //Function used to find the result of the calculation that the user has inputted
 function equateEquation(){
-    
+
+    //Function called to ensure there are no errors in the calculation
+    let noErrors = identifyErrors()
+
+    //This function will continue only if there are no errors in the code
+    if (noErrors){
+        console.log(math.eval(equation))
+        alert("Successful Equation")
+    }
 }
+
+//Function used to identify errors in the equation that the user has inputted
+function identifyErrors(){
+
+    //Ensuring the last item isn't an operator
+    let correctOperator = lastOperator()
+
+    //Ensuring you aren't trying to divide by 0
+    let noDivideError = divideBy0Error()
+
+    if (noDivideError == true && correctOperator == true){
+        return true
+    }
+    else{
+        return false
+    }
+}
+
+function lastOperator(){
+    let lastCharacter = equation.substring(equation.length-1,equation.length)
+    if (lastCharacter == "/" || lastCharacter == "*" || lastCharacter == "+" || lastCharacter == "-"){
+        alert("Last character can't be an operator")
+        return false
+    }
+    return true
+}
+
+function divideBy0Error(){
+    for (let i=0 ; i<equation.length ; i++){
+        if (equation.substring(i,i+1) == "/" && equation.substring(i+1,i+2)){
+            alert("Divide by 0 error")
+            return false
+        }
+    }
+    return true
+}
+
