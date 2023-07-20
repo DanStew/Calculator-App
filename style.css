@@ -1,0 +1,85 @@
+/* General CSS applied to all code on the website */
+body{
+    margin : 0px;
+    padding : 0px;
+    height : 100vh;
+    width : 100%;
+    display : flex;
+    flex-direction: column;
+    background : #D1D1D9;
+}
+
+/* Code given to all flex items on the website, to allow them to grow and shrink to size */
+.flex_items{
+    flex : 1 1; 
+    width : 100%;
+}
+
+/* Code to create the main outer outline for the page */
+#header{
+    border-bottom : 1px solid black;
+}
+
+#main_body{
+    flex : 4 4;
+}
+
+/* Code to style the main header of the page*/
+#main_title{
+    margin : 1%;
+    font-family: "roboto", sans-serif; 
+    font-weight: 700;
+    text-align: center;
+    font-size: 60px;
+}
+
+/* Code to create the frame for the calculator */
+#calculator{
+    margin : 2% 0% 2% 5%;
+    width : 90%;
+    height : 90%;
+    border : 2px solid black;
+    border-radius: 20px;
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Creating the different sections of the calculator */
+
+#calculator_upper{
+    background-color: #626262;
+    border-radius: 16px;
+    border-bottom : 4px solid black;
+}
+
+#calculator_lower{
+    flex : 3 3;
+    display : flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*Creating the styling for the buttons in the calculator and the calculators columns */
+.calculator_column{
+    display : flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height : 100%;
+}
+
+.calculator_button{
+    padding : 0px;
+    margin : 5px;
+    width : 80%;
+    border-radius: 40px;
+    font-family: "roboto",sans-serif;
+    font-size: 40px;
+}
+
+.calculator_image{
+    height : 40px;
+    width : 40px;
+}
