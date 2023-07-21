@@ -52,6 +52,10 @@ body{
     background-color: #626262;
     border-radius: 16px;
     border-bottom : 4px solid black;
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 #calculator_lower{
@@ -77,9 +81,56 @@ body{
     border-radius: 40px;
     font-family: "roboto",sans-serif;
     font-size: 40px;
+    transition : background-color 1000ms;
+}
+
+.calculator_button:hover{
+    background-color: #9f9f9f;
 }
 
 .calculator_image{
     height : 40px;
     width : 40px;
+}
+
+/* Code to create and style the upper parts of the calculator */
+.output_area{
+    color : white;
+    font-size: 40px;
+    font-family: "roboto",sans-serif;
+    font-weight: 500;
+}
+
+#equation_area{
+    margin-left: 4%;
+    text-align: left;
+}
+
+#answer_area{
+    margin-right: 4%;
+    text-align: right;
+}
+
+/* Media Queries implemented to boost the responsiveness of the website */
+@media (max-width : 576px){ 
+	.output_area{
+        font-size: 30px;
+    }
+    .calculator_image{
+        width : 20px;
+        height : 20px;
+    }
+    .calculator_button{
+        font-size: 20px;
+    }
+}
+
+@media (max-width : 768px){ 
+    .calculator_image{
+        width : 30px;
+        height : 30px;
+    }
+    .calculator_button{
+        font-size: 30px;
+    }
 }

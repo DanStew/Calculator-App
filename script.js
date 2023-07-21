@@ -15,6 +15,10 @@ for (let i=0; i<calculatorButtons.length; i++){
         //Else a description of the button they clicked is stored
         let value = calculatorButtons[i].innerHTML.length == 1 ? calculatorButtons[i].innerHTML : calculatorButtons[i].value
 
+        //Stop showing the answer to the equation
+        let answerArea = document.getElementById("answer_area")
+        answerArea.innerHTML = ""
+
         //Code to make changes to the equation, based upon what the user inputted
         if (value.length == 1){
             equation += value
@@ -22,7 +26,7 @@ for (let i=0; i<calculatorButtons.length; i++){
         else {
             processAlternateValues(value)
         }
-        console.log(equation)
+        updateEquationOutput()
     })
 }
 
@@ -38,7 +42,7 @@ document.addEventListener("keyup",function(e){
         value= String.fromCharCode(e.keyCode)
         equation += value
     }
-    console.log(equation)
+    updateEquationOutput()
 })
 
 //Function used to process alternate values and add them to the equation
@@ -46,11 +50,11 @@ function processAlternateValues(value){
     if (value=="on"){
         equation = ""
     }
-    else if (value=="squared"){
-
+    else if (value=="open_bracket"){
+        equation += "("
     }
-    else if (value=="powerOf"){
-
+    else if (value=="closed_bracket"){
+        equation += ")"
     }
     else if (value=="divide"){
         equation += "/"
@@ -72,7 +76,6 @@ function processAlternateValues(value){
     }
     else if (value=="equate"){
         equateEquation()
-        equation = ""
     }
 }
 
@@ -84,8 +87,8 @@ function equateEquation(){
 
     //This function will continue only if there are no errors in the code
     if (noErrors){
-        console.log(math.eval(equation))
-        alert("Successful Equation")
+        let answerArea = document.getElementById("answer_area")
+        answerArea.innerHTML = math.eval(equation)
     }
 }
 
@@ -117,7 +120,7 @@ function lastOperator(){
 
 function divideBy0Error(){
     for (let i=0 ; i<equation.length ; i++){
-        if (equation.substring(i,i+1) == "/" && equation.substring(i+1,i+2)){
+        if (equation.substring(i,i+1) == "/" && equation.substring(i+1,i+2) == "0"){
             alert("Divide by 0 error")
             return false
         }
@@ -125,3 +128,9 @@ function divideBy0Error(){
     return true
 }
 
+
+//Functions to output the inputs by the user to the screen
+function updateEquationOutput(){
+    let equationArea = document.getElementById("equation_area")
+    equationArea.innerHTML = equation
+}
